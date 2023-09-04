@@ -1,0 +1,63 @@
+extends layout
+
+block content
+
+  .row.mt-5
+    .col-sm-6.fs-text-left
+      .h5
+        |Company:  #[strong #{company} ]
+    .col-sm-6.fs-text-right
+      .h5
+        |Date:  #[strong #{today} ]
+
+  .row.mt-3
+    .col-sm-12.fs-text-left
+      .h5.mb-5
+        |VAT No:  #[strong #{vatNo} ]
+
+  .container-fluid
+
+    table#history.table.table-striped.table-bordered.table-hover.mt-5.display(style="width:100%")
+
+      thead
+        tr.fs-text-powder-blue
+            th.text-center Processed On
+            th.text-center Pay Indicator
+            th.text-center Form Bundle No
+            th.text-center Charge Ref No
+            th.text-center Due Date
+            th.text-end Amount Due
+
+        tbody
+          each n, i in output
+            tr
+              td.text-center #{moment(n.PROCESSED_DATETIME.substr(0, 10)).format('Do MMM YYYY')}
+              td.text-center #{n.PAYMENT_INDICATOR}
+              td.text-center #{n.FORM_BUNDLE_NO}
+              td.text-center #{n.CHARGE_REF_NO}
+              td.text-center #{moment(n.DUE_DATE).format('Do MMM YYYY')}
+              td.text-end #{formatCurrency(n.AMOUNT_DUE, opts)}
+
+    .row
+      .alert.alert-info.mt-5
+        span.material-icons info
+        strong &nbsp;Information
+        hr
+        .container-fluid
+          p.fs-banner-text Please be aware, all the details shown here are stored on your IBM server, this is your record of payment.
+          p.fs-banner-text This information is not retrieved from HMRC.
+
+    script(src='https://code.jquery.com/jquery-3.5.1.js')
+
+    script.
+      $(document).ready(function() {
+
+        $('#history').DataTable({
+          "order": [],
+          lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+          ]
+        });
+
+      });

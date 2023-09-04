@@ -1,0 +1,115 @@
+doctype html
+html(lang='en')
+
+  head
+
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+    title f_MTD VAT
+
+    //- Bootstrap CSS
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css')
+
+    //- Google Fonts & Icons
+    link(rel="preconnect" href="https://fonts.gstatic.com")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Raleway&display=swap")
+    link(rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons')
+
+    //- Font Awesome Icons
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer")
+
+    //- Datatables
+    link(rel='stylesheet' href='https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css')
+
+    //- Local stylesheets
+    link(rel='stylesheet' href='/stylesheets/style.css')
+    link(rel='stylesheet' href='/stylesheets/fss.css')
+
+    //- JQuery
+    script(src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous")
+
+  body
+
+    - var disabled = "";
+
+    if !accessFlag
+      - var disabled = "disabled";
+
+    nav.navbar.navbar-expand-lg.navbar-light
+      .container-fluid
+        a.navbar-brand(href='/')
+          img.d-inline-block.align-top(src='/images/Logo4646.png' alt='' width='50' height='50')
+        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarNavDropdown.collapse.navbar-collapse
+          ul.navbar-nav
+            li.nav-item
+              a.nav-link.active(aria-current='page' href='/index')
+                span.material-icons home
+                | &nbsp;Home
+            li.nav-item
+              a(class=`nav-link` href='/upload')
+                span.material-icons publish
+                | &nbsp;Upload
+            li.nav-item
+              a(class=`nav-link ${disabled}` href='/returns')
+                span.material-icons keyboard_return
+                | &nbsp;Returns
+            li.nav-item
+              a(class=`nav-link ${disabled}` href='/liabilities')
+                span.material-icons fact_check
+                | &nbsp;Liabilities
+            li.nav-item
+              a(class=`nav-link ${disabled}` href='/payments')
+                span.material-icons payments
+                | &nbsp;Payments
+            li.nav-item
+              a(class=`nav-link ${disabled}` href='/penalty')
+                span.material-icons currency_pound
+                | &nbsp;Penalties
+            li.nav-item
+              a(class=`nav-link` href='/history')
+                span.material-icons history
+                | &nbsp;History
+            li.nav-item
+              a(class=`nav-link ${disabled}` href='/validateVAT')
+                span.material-icons rule
+                | &nbsp;Check VAT No
+            li.nav-item
+              a(class=`nav-link` href='/config')
+                span.material-icons settings
+                | &nbsp;Settings
+            li.nav-item
+              a(class=`nav-link` href='/help')
+                span.material-icons help_center
+                | &nbsp;Help
+
+    .container-fluid
+
+      h3.mt-5.fs-text-blue.fs-border-left.fw-bold.ps-3 #{title}
+
+      .container-fluid.mt-5
+      block content
+
+      footer.footer.mt-5.py-3.bg-light
+
+        .container-fluid
+
+          .row
+            .col-sm-4.small.text-start.fs-text-indigo
+              i.material-icons.md-18 copyright
+              | &nbsp; Copyright 1990-#{new Date().getFullYear()}, All Rights Reserved
+            .col-sm-4.small.text-center.fs-text-indigo
+              a(target="_blank" href="https://www.formaserve.co.uk") Built by FormaServe Systems Ltd
+            .col-sm-4.small.text-end.fs-text-indigo
+              | Version 6.0.20230317 - March 2023
+
+          .row
+            .col-sm-12.small.text-center.mt50.fs-text-indigo
+              i.material-icons.md-18 local_phone
+              | &nbsp; 01908 109978
+
+  //- JQuery
+  script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js", integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V", crossorigin="anonymous")
+  script(src='https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js')
