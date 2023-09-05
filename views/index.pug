@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-  .row.mt-5
+  .row.mt-5.mb-3
     .col-sm-6.fs-text-left
       .h5
         |Company:  #[strong #{company} ]
@@ -10,10 +10,10 @@ block content
       .h5
         |Date:  #[strong #{today} ]
 
-  .row.mt-3
-    .col-sm-12.fs-text-left
-      .h5.mb-5
-        |VAT No:  #[strong #{vatNo} ]
+  //- .row.mt-3
+  //-   .col-sm-12.fs-text-left
+  //-     .h5.mb-5
+  //-       |VAT No:  #[strong #{vatNo} ]
 
   .container-fluid
 
@@ -21,31 +21,34 @@ block content
 
       thead
         tr.fs-text-powder-blue
-            th.text-center Processed On
-            th.text-center Pay Indicator
-            th.text-center Form Bundle No
-            th.text-center Charge Ref No
-            th.text-center Due Date
-            th.text-end Amount Due
+            th.text-center Open
+            th.text-center ID
+            th.text-start Photo Name
+            th.text-start Photo Location
+            th.text-center Access Date
+            th.text-center Access Time
 
         tbody
           each n, i in output
             tr
-              td.text-center #{moment(n.PROCESSED_DATETIME.substr(0, 10)).format('Do MMM YYYY')}
-              td.text-center #{n.PAYMENT_INDICATOR}
-              td.text-center #{n.FORM_BUNDLE_NO}
-              td.text-center #{n.CHARGE_REF_NO}
-              td.text-center #{moment(n.DUE_DATE).format('Do MMM YYYY')}
-              td.text-end #{formatCurrency(n.AMOUNT_DUE, opts)}
+              td.text-center
+                a(href="formaserve.co.uk") Open Photo
+                
+              td.text-center #{n.ID}
+              td.text-start #{n.PHOTONAME}
+              td.text-start #{n.PHOTOLOCATION}
+              //- td.text-center #{moment(n.ADD_TS).format('Do MMM YYYY')}
+              td.text-center #{moment(n.ADD_TS.substr(0, 10)).format('Do MMM YYYY')}
+              td.text-center #{n.ADD_TS.substr(11, 5)}
 
-    .row
-      .alert.alert-info.mt-5
-        span.material-icons info
-        strong &nbsp;Information
-        hr
-        .container-fluid
-          p.fs-banner-text Please be aware, all the details shown here are stored on your IBM server, this is your record of payment.
-          p.fs-banner-text This information is not retrieved from HMRC.
+    //- .row
+    //-   .alert.alert-info.mt-5
+    //-     span.material-icons info
+    //-     strong &nbsp;Information
+    //-     hr
+    //-     .container-fluid
+    //-       p.fs-banner-text Please be aware, all the details shown here are stored on your IBM server, this is your record of payment.
+    //-       p.fs-banner-text This information is not retrieved from HMRC.
 
     script(src='https://code.jquery.com/jquery-3.5.1.js')
 

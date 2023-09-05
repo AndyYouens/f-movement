@@ -12,9 +12,11 @@
     "cookie-parser": "^1.4.6",
     "debug": "^4.3.4",
     "express": "^4.18.2",
+    "format-currency": "^1.0.0",
     "http-errors": "^2.0.0",
     "idb-connector": "^1.2.18",
     "idb-pconnector": "^1.1.1",
+    "moment": "^2.29.4",
     "morgan": "^1.10.0",
     "pug": "^3.0.2"
   }
