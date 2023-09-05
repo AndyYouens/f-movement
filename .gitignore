@@ -18,5 +18,5 @@ config/
 # Uploads
 public/uploads/
 
-# NPM Package Lock
-package-lock.json
+# movement photos
+public/movement/
