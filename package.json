@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "DEBUG=movement:* nodemon -L ./bin/www",
+    "start": "export PORT=2999 && DEBUG=movement:* nodemon -L ./bin/www",
     "lint": "eslint ./bin/www"
   },
   "dependencies": {

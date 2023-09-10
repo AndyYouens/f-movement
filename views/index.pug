@@ -32,8 +32,9 @@ block content
           each n, i in output
             tr
               td.text-center
-                a(href="formaserve.co.uk") Open Photo
-                
+                //- a(href=`${n.PHOTOLOCATION}Movement${n.PHOTONAME}` target="_blank") Click Me
+                a(href=`./movement/Movement${n.PHOTONAME}` target="_blank") Click Me
+
               td.text-center #{n.ID}
               td.text-start #{n.PHOTONAME}
               td.text-start #{n.PHOTOLOCATION}
